@@ -4,8 +4,8 @@ from django.db import models
 
 class Alumno(models.Model):
     nombre = models.CharField(max_length=40)
-    apallido = models.CharField(max_length=40)
-    mail = models.EmailField()
+    apellido = models.CharField(max_length=40)
+    mail = models.EmailField(max_length=50)
 
 class Curso(models.Model):
     nombre = models.CharField(max_length=40)
@@ -13,5 +13,5 @@ class Curso(models.Model):
 
 class Profesor(models.Model):
     nombre = models.CharField(max_length=40)
-    apallido = models.CharField(max_length=40)
-    profesion = models.CharField(max_length=40)
+    apellido = models.CharField(max_length=40)
+    profesion = models.CharField(max_length=50)
