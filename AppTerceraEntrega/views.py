@@ -32,11 +32,12 @@ def profesores(req):
             informacion = formulaio.cleaned_data
             profesor = Profesor(nombre=informacion['nombre'], apellido=informacion['apellido'], profesion=informacion['profesion'])
             profesor.save()
-            return render(req,"appterceraentrega/padre.html")
+            return redirect('profesores')
     else:
         formulaio = ProfesorFormulario()
 
-    return render(req, "appterceraentrega/profesores.html",{"formulario": formulaio})
+    profesores = Profesor.objects.all()
+    return render(req, "appterceraentrega/profesores.html",{"formulario": formulaio, "profesores": profesores})
 
 def cursos(req):
     if req.method == 'POST':
@@ -46,8 +47,9 @@ def cursos(req):
             informacion = formulaio.cleaned_data
             curso = Curso(nombre=informacion['nombre'], camada=informacion['camada'])
             curso.save()
-            return render(req,"appterceraentrega/padre.html")
+            return redirect('cursos')
     else:
         formulaio = CursoFormulario()
 
-    return render(req, "appterceraentrega/cursos.html",{"formulario": formulaio})
+    cursos = Curso.objects.all()
+    return render(req, "appterceraentrega/cursos.html",{"formulario": formulaio, "cursos": cursos})
