@@ -18,9 +18,8 @@
 
     <form action="" method="POST">
         {% csrf_token %}
-        <p>Nombre: <input type="text" name="nombre"></p>
-        <p>Camada: <input type="number" name="camada"></p>
-
+        {{ formulario.as_table }}
+        
         <input type="submit" value="Enviar">
     </form>
 
