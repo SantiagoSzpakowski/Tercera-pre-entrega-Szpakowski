@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from AppTerceraEntrega.models import Alumno, Curso, Profesor
 from AppTerceraEntrega.forms import AlumnoFormulario, ProfesorFormulario, CursoFormulario
@@ -16,11 +16,13 @@ def alumnos(req):
             informacion = formulaio.cleaned_data
             alumno = Alumno(nombre=informacion['nombre'], apellido=informacion['apellido'], mail=informacion['mail'])
             alumno.save()
-            return render(req,"appterceraentrega/padre.html")
+            return redirect('alumnos')
     else:
         formulaio = AlumnoFormulario()
 
-    return render(req, "appterceraentrega/alumnos.html",{"formulario": formulaio})
+    alumnos = Alumno.objects.all()
+    return render(req, "appterceraentrega/alumnos.html",{"formulario": formulaio, "alumnos": alumnos})
+
 
 def profesores(req):    
     if req.method == 'POST':
