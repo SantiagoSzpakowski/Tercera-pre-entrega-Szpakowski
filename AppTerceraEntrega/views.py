@@ -15,6 +15,14 @@ def alumnos(req):
 
     return render(req,"appterceraentrega/alumnos.html")
 
+def profesores(req):    
+    if req.method == 'POST':
+        alumno = Profesor(nombre=req.POST['nombre'], apellido=req.POST['apellido'], profesion=req.POST['profesion'])
+        alumno.save()
+        return render(req,"appterceraentrega/padre.html")
+
+    return render(req,"appterceraentrega/profesores.html")
+
 def cursos(req):
     if req.method == 'POST':
         curso = Curso(nombre=req.POST['nombre'], camada=req.POST['camada'])
