@@ -15,12 +15,10 @@
     {% block contenidoQueCambia %} 
 
     <h1>Alumnos</h1>
-
+    
     <form action="" method="POST">
         {% csrf_token %}
-        <p>Nombre: <input type="text" name="nombre"></p>
-        <p>Apellido: <input type="text" name="apellido"></p>
-        <p>Mail: <input type="email" name="mail"></p>
+        {{ formulario.as_table }}
 
         <input type="submit" value="Enviar">
     </form>
