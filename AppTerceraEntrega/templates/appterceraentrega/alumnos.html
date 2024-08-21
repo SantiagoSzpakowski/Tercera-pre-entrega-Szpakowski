@@ -40,6 +40,17 @@
         <input type="submit" value="Enviar">
     </form>
 
+    <h3>Buscar por id:</h3>
+
+    <form action="" method="GET">
+        <input type="number" name="id">
+        <input type="submit" value="Buscar">
+    </form>
+
+    {% if alumno != "" %}
+    <p>El alumno buscado es: {{alumno.nombre}}, {{alumno.apellido}} - {{alumno.mail}}</p>
+    {% endif %}
+
     <table>
         <thead>
             <tr>

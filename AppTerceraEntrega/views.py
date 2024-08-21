@@ -9,6 +9,7 @@ def inicio(req):
     return render(req, 'appterceraentrega/padre.html')
 
 def alumnos(req):
+    alumno_buscado = ""
     if req.method == 'POST':
         formulaio = AlumnoFormulario(req.POST)
 
@@ -18,10 +19,17 @@ def alumnos(req):
             alumno.save()
             return redirect('alumnos')
     else:
+        if req.GET.get("id"):
+            id_alumno = req.GET["id"]
+            alumno_buscado = Alumno.objects.filter(id=id_alumno).first()
+            #Verifico que alumno_buscado sea de la clase Alumno
+            if not isinstance(alumno_buscado, Alumno):
+                alumno_buscado = ""
+
         formulaio = AlumnoFormulario()
 
     alumnos = Alumno.objects.all()
-    return render(req, "appterceraentrega/alumnos.html",{"formulario": formulaio, "alumnos": alumnos})
+    return render(req, "appterceraentrega/alumnos.html",{"formulario": formulaio, "alumnos": alumnos, "alumno": alumno_buscado})
 
 
 def profesores(req):    
