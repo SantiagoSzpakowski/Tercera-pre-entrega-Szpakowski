@@ -1,33 +1,15 @@
+{% extends "appterceraentrega/padre.html" %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profesores</title>
-    <style>
-        table {
-            width: 70%;
-            margin: 20px 20px;
-        }
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 3px;
-        }
-        th {
-            background-color: #f2f2f2;
-            color: #333;
-            text-align: center;
-        }        
-    </style>
+    <link rel="stylesheet" href="{% static 'appterceraentrega/css/styles.css' %}">
 </head>
 <body>
-    
-
-    {% extends "appterceraentrega/padre.html" %}
-
-    {% load static %}
-
     {% block contenidoQueCambia %} 
 
     <h1>Profesores</h1>
@@ -51,22 +33,22 @@
     <p>El profesor buscado es: {{profesor.nombre}} {{profesor.apellido}} - {{profesor.profesion}}</p>
     {% endif %}
 
-    <table>
+    <table class="table_preentrega">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Profesion</th>
+                <th class="th_preentrega">ID</th>
+                <th class="th_preentrega">Nombre</th>
+                <th class="th_preentrega">Apellido</th>
+                <th class="th_preentrega">Profesion</th>
             </tr>
         </thead>
         <tbody>
             {% for profesor in profesores %}
             <tr>
-                <td>{{ profesor.id }}</td>
-                <td>{{ profesor.nombre }}</td>
-                <td>{{ profesor.apellido }}</td>
-                <td>{{ profesor.profesion }}</td>
+                <td class="td_preentrega">{{ profesor.id }}</td>
+                <td class="td_preentrega">{{ profesor.nombre }}</td>
+                <td class="td_preentrega">{{ profesor.apellido }}</td>
+                <td class="td_preentrega">{{ profesor.profesion }}</td>
             </tr>
             {% endfor %}
         </tbody>

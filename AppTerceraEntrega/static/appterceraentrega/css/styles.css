@@ -10917,3 +10917,20 @@ footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+
+
+
+.table_preentrega {
+  width: 70%;
+  margin: 20px 20px;
+}
+.th_preentrega, .td_preentrega {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 3px;
+}
+.th_preentrega {
+  background-color: #f2f2f2;
+  color: #333;
+  text-align: center;
+}
