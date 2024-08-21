@@ -40,7 +40,16 @@
         <input type="submit" value="Enviar">
     </form>
 
-    <h3>Buscar</h3>
+    <h3>Buscar por id:</h3>
+
+    <form action="" method="GET">
+        <input type="number" name="id">
+        <input type="submit" value="Buscar">
+    </form>
+
+    {% if profesor != "" %}
+    <p>El profesor buscado es: {{profesor.nombre}} {{profesor.apellido}} - {{profesor.profesion}}</p>
+    {% endif %}
 
     <table>
         <thead>

@@ -39,6 +39,17 @@
         <input type="submit" value="Enviar">
     </form>
 
+    <h3>Buscar por id:</h3>
+
+    <form action="" method="GET">
+        <input type="number" name="id">
+        <input type="submit" value="Buscar">
+    </form>
+
+    {% if curso != "" %}
+    <p>El curso buscado es: {{curso.nombre}} - {{curso.camada}}</p>
+    {% endif %}
+
     <table>
         <thead>
             <tr>

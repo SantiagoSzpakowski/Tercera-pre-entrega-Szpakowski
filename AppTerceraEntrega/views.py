@@ -19,7 +19,6 @@ def alumnos(req):
             return redirect('alumnos')
     else:
         alumno_buscado = obtieneObjeto(req,Alumno)
-
         formulaio = AlumnoFormulario()
 
     alumnos = Alumno.objects.all()
@@ -35,10 +34,11 @@ def profesores(req):
             profesor.save()
             return redirect('profesores')
     else:
+        profesor_buscado = obtieneObjeto(req,Profesor)
         formulaio = ProfesorFormulario()
 
     profesores = Profesor.objects.all()
-    return render(req, "appterceraentrega/profesores.html",{"formulario": formulaio, "profesores": profesores})
+    return render(req, "appterceraentrega/profesores.html",{"formulario": formulaio, "profesores": profesores, "profesor": profesor_buscado})
 
 def cursos(req):
     if req.method == 'POST':
@@ -50,17 +50,18 @@ def cursos(req):
             curso.save()
             return redirect('cursos')
     else:
+        curso_buscado = obtieneObjeto(req,Curso)
         formulaio = CursoFormulario()
 
     cursos = Curso.objects.all()
-    return render(req, "appterceraentrega/cursos.html",{"formulario": formulaio, "cursos": cursos})
+    return render(req, "appterceraentrega/cursos.html",{"formulario": formulaio, "cursos": cursos, "curso": curso_buscado})
 
 def obtieneObjeto(req, clase):
     objeto_buscado = ""
     if req.GET.get("id"):
             id_objeto = req.GET["id"]
             objeto_buscado = clase.objects.filter(id=id_objeto).first()
-            #Verifico si el id recibido encontro un alumno en la bd, sino devuelvo ""
+            #Verifico si el id recibido se encontro en la bd, sino devuelvo ""
             if not isinstance(objeto_buscado, clase):
                 objeto_buscado = ""
     return objeto_buscado
