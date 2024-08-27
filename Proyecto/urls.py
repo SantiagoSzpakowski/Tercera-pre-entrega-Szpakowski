@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from Proyecto.views import redirigir_AppTerceraEntrega_Inicio
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', redirigir_AppTerceraEntrega_Inicio),
     path('AppTerceraEntrega/', include('AppTerceraEntrega.urls')),
 ]
